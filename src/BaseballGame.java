@@ -24,6 +24,12 @@ public class BaseballGame {
             String userInput = sc.next(); // 문자열로 입력 받는다.
 
 
+            if (userInput.length() != 3) {
+                System.out.println("잘못된 입력입니다. 3자리 숫자를 입력하세요.");
+                continue; // 조건이 맞지 않으면 다시 입력 받기
+            }
+
+
         }
         // 게임 진행횟수 반환
     }
