@@ -35,6 +35,11 @@ public class BaseballGame {
                 userNumberSet.add(Character.getNumericValue(digit)); // 문자를 숫자로 변환
             }
 
+            // 중복된 숫자가 있으면 다시 입력 받기
+            if (userNumberSet.size() != 3) {
+                System.out.println("중복된 숫자를 입력할 수 없습니다.");
+                continue; // 중복된 숫자는 다시 입력 받기
+            }
 
 
         }
