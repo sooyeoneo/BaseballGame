@@ -29,6 +29,13 @@ public class BaseballGame {
                 continue; // 조건이 맞지 않으면 다시 입력 받기
             }
 
+            // 입력된 문자열을 문자 배열로 바꾸고 각각의 문자를 숫자로 변환
+            Set<Integer> userNumberSet = new HashSet<>();
+            for (char digit : userInput.toCharArray()) { // 각 문자를 하나씩 분리
+                userNumberSet.add(Character.getNumericValue(digit)); // 문자를 숫자로 변환
+            }
+
+
 
         }
         // 게임 진행횟수 반환
