@@ -42,6 +42,26 @@ public class BaseballGame {
             }
 
 
+            List<Integer> userNumberList = new ArrayList<>(userNumberSet);
+            // 반환된 사용자 입력과 랜덤으로 생성된 수 비교하기
+            for (int userNumberIdx = 0; userNumberIdx < userNumberList.size(); userNumberIdx++) {
+                int userNumber = userNumberList.get(userNumberIdx);
+                boolean isMatchedNumber = false;
+                for (int answerNumberIdx = 0; answerNumberIdx < this.answerNumber.size(); answerNumberIdx++) {
+                    int number = this.answerNumber.get(answerNumberIdx);
+                    if (userNumber == number) {
+                        isMatchedNumber = true;
+
+                    }
+                }
+
+            }
+
+            // 게임 진행횟수 증가 1. 스트라이크 3개 2. 스트라이크 볼 갯수 3. 아웃
+            // 스트라이크 개수 계산
+
+            // 볼 개수 계산
+            // 힌트 출력
         }
         // 게임 진행횟수 반환
     }
