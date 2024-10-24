@@ -78,8 +78,12 @@ public class BaseballGame {
 
             System.out.println("스트라이크 : " + strike + "볼 : " + ball); // 스트라이크 개수, 볼 개수
 
-
+            // 정답을 맞춘 경우 게임 종료
+            if (strike == 3) {
+                System.out.println("축하합니다! 정답입니다!" + attempts + "번 만에 맞췄습니다.");
+                break;
+            }
         }
-
+        return attempts; // 게임 시도 횟수 반환
     }
 }
