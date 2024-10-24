@@ -1,4 +1,11 @@
-import java.util.*;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedHashSet;
+
 
 public class BaseballGame {
     private final List<Integer> answerNumber; // 랜덤 3자리 수를 저장할 Set
@@ -13,12 +20,14 @@ public class BaseballGame {
         }
         answerNumber = new ArrayList<>(baseballNumber); // set은 순서보장이 안됨. list로 index 사용
         // 객체 생성시 랜덤 3자리 수의 정답을 만든다.
-        // System.out.println("생성된 3자리 수: " + NumberGenerator);
+        // System.out.println("생성된 3자리 수: " + baseballNumber);
     }
 
     public int play() {
 
         Scanner sc = new Scanner(System.in); // 사용자에게 입력값을 받는다.
+        int attempts = 0; // 게임 시도 횟수
+
         while (true) {
             System.out.println("숫자를 입력하세요 (중복되지 않은 3자리 수) : ");
             String userInput = sc.next(); // 문자열로 입력 받는다.
@@ -65,12 +74,12 @@ public class BaseballGame {
                 }
             }
 
-            // 게임 진행횟수 증가 1. 스트라이크 3개 2. 스트라이크 볼 갯수 3. 아웃
-            // 스트라이크 개수 계산
+            attempts++; // 게임 시도 횟수 증가
 
-            // 볼 개수 계산
-            // 힌트 출력
+            System.out.println("스트라이크 : " + strike + "볼 : " + ball); // 스트라이크 개수, 볼 개수
+
+
         }
-        // 게임 진행횟수 반환
+
     }
 }
