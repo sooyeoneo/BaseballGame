@@ -73,7 +73,6 @@ public class BaseballGame {
                     out++;
                 }
             }
-
             attempts++; // 게임 시도 횟수 증가
 
             System.out.println("스트라이크 : " + strike + "볼 : " + ball); // 스트라이크 개수, 볼 개수
