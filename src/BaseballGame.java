@@ -40,10 +40,20 @@ public class BaseballGame {
 
             // 입력된 문자열을 문자 배열로 바꾸고 각각의 문자를 숫자로 변환
             Set<Integer> userNumberSet = new LinkedHashSet<>();
+            boolean isDigit = true;
 
             for (char digit : userInput.toCharArray()) { // 각 문자를 하나씩 분리
+                if (!Character.isDigit(digit)) {
+                    System.out.println("올바른 숫자를 입력하세요.");
+                    isDigit = false;
+                    break;
+                }
                 userNumberSet.add(Character.getNumericValue(digit)); // 문자를 숫자로 변환
+                System.out.println("Character.isDigit(digit) = " + Character.isDigit(digit));
             } // 예외 처리 : 숫자가 아닌 값이 들어왔을 때
+            if (!isDigit) {
+                continue;
+            }
 
             // 중복된 숫자가 있으면 다시 입력 받기
             if (userNumberSet.size() != 3) {
@@ -58,11 +68,11 @@ public class BaseballGame {
             // 반환된 사용자 입력과 랜덤으로 생성된 수 비교하기
             for (int userNumberIdx = 0; userNumberIdx < userNumberList.size(); userNumberIdx++) {
                 int userNumber = userNumberList.get(userNumberIdx);
-
+                // boolean isMatchedNumber = false;
                 for (int answerNumberIdx = 0; answerNumberIdx < this.answerNumber.size(); answerNumberIdx++) {
                     int number = this.answerNumber.get(answerNumberIdx);
                     if (userNumber == number) {
-
+                        // isMatchedNumber = true;
                         if (userNumberIdx == answerNumberIdx) {
                             strike++;
                         } else {
@@ -70,7 +80,7 @@ public class BaseballGame {
                         }
                     }
                 }
-                if (strike == 0 && ball == 0) {
+                if (strike == 0 && ball == 0) { // (!isMatchedNumber)
                     out++;
                 }
             }
@@ -85,7 +95,7 @@ public class BaseballGame {
 
             // 정답을 맞춘 경우 게임 종료
             if (strike == 3) {
-                System.out.println("축하합니다! 정답입니다!" + attempts + "번 만에 맞췄습니다.");
+                System.out.println("축하합니다! 정답입니다! " + attempts + "번 만에 맞췄습니다.");
                 break;
             }
         }
