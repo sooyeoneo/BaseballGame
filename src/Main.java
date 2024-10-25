@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -11,17 +13,25 @@ public class Main {
             String selection = sc.next(); // 사용자로부터 1, 2, 3 입력 받기
             System.out.println(); // 메뉴와 게임 실행 간의 간격
 
+            int gameCount = 0; // 게임 횟수 초기화
+            Map<Integer, Integer> store = new HashMap<>(); // 게임 전체 횟수 기록 -> Map
+
             switch (selection) {
                 case "1": // 1을 입력하면 게임 실행 및 재시작 여부 확인
                     while (true) {
                         BaseballGame game = new BaseballGame(); // 새 야구 게임 생성
-                        game.play(); // 게임 실행
+                        int attempts = game.play(); // 게임 실행
+                        gameCount++;
+                        store.put(gameCount, attempts); // Key는 gameCount, Value는 attempts
 
                         System.out.println("게임을 다시 하시겠습니까? (네/아니오): ");
                         String retry = sc.next(); // 게임 재시작 여부를 확인
 
                         if (!retry.equalsIgnoreCase("네")) {
                             System.out.println("게임을 종료합니다.");
+                            for (Map.Entry<Integer, Integer> entry : store.entrySet()) {
+                                System.out.println(entry.getKey() + "번째 게임 : 시도 횟수 - " + entry.getValue());
+                            }
                             break; // 사용자가 "네"가 아닌 값을 입력 시 반복문 종료
                         }
                     }

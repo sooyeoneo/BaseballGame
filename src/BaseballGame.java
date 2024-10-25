@@ -19,13 +19,13 @@ public class BaseballGame {
         answerNumber = new ArrayList<>(baseballNumber); // set은 순서보장이 안됨. list로 index 사용
         // 객체 생성시 랜덤 3자리 수의 정답을 만든다.
         System.out.println("생성된 3자리 수: " + baseballNumber); // 랜덤 3자리 수 확인
-        System.out.println("생성된 3자리 수: " + answerNumber);
+        // System.out.println("생성된 3자리 수: " + answerNumber);
     }
 
     public int play() {
 
         Scanner sc = new Scanner(System.in); // 사용자에게 입력값을 받는다.
-        int attempts = 0; // 게임 시도 횟수
+        int attempts = 0; // 정답을 맞힐 때까지의 게임 시도 횟수
 
         while (true) {
             System.out.println("< 게임을 시작합니다 >");
@@ -84,7 +84,7 @@ public class BaseballGame {
                     out++;
                 }
             }
-            attempts++; // 게임 시도 횟수 증가
+            attempts++; // 정답을 맞힐 때까지의 게임 시도 횟수 증가
 
             if (strike > 0 || ball > 0) {
                 System.out.println("스트라이크 : " + strike + " 볼 : " + ball); // 스트라이크 개수, 볼 개수
