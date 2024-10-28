@@ -7,12 +7,14 @@ import java.util.Set;
 
 public class BaseballGame {
     private final List<Integer> answerNumber; // 랜덤 3자리 수를 저장할 Set
+    private final int level; // 난이도에 따른 자리수
 
-    public BaseballGame() {
+    public BaseballGame(int level) {
+        this.level = level;
         Random random = new Random();
         Set<Integer> baseballNumber = new LinkedHashSet<>(); // 삽입한 순서를 유지
 
-        while (baseballNumber.size() < 3) {
+        while (baseballNumber.size() < level) {
             int number = random.nextInt(9) + 1; // 1부터 9 사이의 숫자
             baseballNumber.add(number);
         }
@@ -33,14 +35,14 @@ public class BaseballGame {
             String userInput = sc.next(); // 문자열로 입력 받는다.
 
 
-            if (userInput.length() != 3) {
+            if (userInput.length() != level) {
                 System.out.println("잘못된 입력입니다. 3자리 숫자를 입력하세요.");
                 continue; // 조건이 맞지 않으면 다시 입력 받기
             }
 
             // 입력된 문자열을 문자 배열로 바꾸고 각각의 문자를 숫자로 변환
             Set<Integer> userNumberSet = new LinkedHashSet<>();
-            boolean isDigit = true;
+            boolean isDigit = true; // 숫자 여부를 확인하는 boolean 변수 초기값 true
 
             for (char digit : userInput.toCharArray()) { // 각 문자를 하나씩 분리
                 if (!Character.isDigit(digit)) {
@@ -56,7 +58,7 @@ public class BaseballGame {
             }
 
             // 중복된 숫자가 있으면 다시 입력 받기
-            if (userNumberSet.size() != 3) {
+            if (userNumberSet.size() != level) {
                 System.out.println("중복된 숫자를 입력할 수 없습니다.");
                 continue; // 중복된 숫자는 다시 입력 받기
             }
@@ -94,7 +96,7 @@ public class BaseballGame {
 
 
             // 정답을 맞춘 경우 게임 종료
-            if (strike == 3) {
+            if (strike == level) {
                 System.out.println("축하합니다! 정답입니다! " + attempts + "번 만에 맞췄습니다.");
                 break;
             }

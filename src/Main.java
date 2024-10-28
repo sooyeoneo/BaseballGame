@@ -7,18 +7,30 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int gameCount = 0; // n번째 게임 순번 횟수 초기화
         Map<Integer, Integer> store = new HashMap<>(); // 게임 전체 횟수 기록 -> Map
+        int level = 3; // 기본 자리수 설정
 
         while (true) {
             System.out.println("환영합니다! 원하시는 번호를 입력해주세요.");
-            System.out.println("1. 게임 시작하기 2. 게임 기록 보기 3. 게임 종료하기");
+            System.out.println("0. 자리수 변경하기 1. 게임 시작하기 2. 게임 기록 보기 3. 게임 종료하기");
 
-            String selection = sc.next(); // 사용자로부터 1, 2, 3 입력 받기
+            String selection = sc.next(); // 사용자로부터 0, 1, 2, 3 입력 받기
             System.out.println(); // 메뉴와 게임 실행 간의 간격
 
             switch (selection) {
+                case "0": // 0을 입력하면 자리수 변경이 가능
+                    System.out.println("원하는 자리수를 입력하세요 (3, 4, 5 중에 선택): ");
+                    int newLevel = sc.nextInt();
+                    if (newLevel == 3 || newLevel == 4 || newLevel == 5) {
+                        level = newLevel;
+                        System.out.println("자리수가 " + level + "로 설정되었습니다.");
+                    } else {
+                        System.out.println("올바른 자리수를 입력하세요 (3, 4, 5 중 하나)");
+                    }
+                    break;
+
                 case "1": // 1을 입력하면 게임 실행 및 재시작 여부 확인
                     while (true) {
-                        BaseballGame game = new BaseballGame(); // 새 야구 게임 생성
+                        BaseballGame game = new BaseballGame(level); // 새 야구 게임 생성
                         int attempts = game.play(); // 게임 실행
                         gameCount++;
                         store.put(gameCount, attempts); // Key는 gameCount, Value는 attempts
